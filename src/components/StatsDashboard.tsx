@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import api from '../api';
 import { useMessage } from '../context/MessageContext';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 interface Stats {
     total: number;
@@ -13,7 +13,6 @@ interface Stats {
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
-// Custom label component for PieChart
 const CustomPieChartLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, name }: any) => {
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * Math.PI / 180);
@@ -28,7 +27,7 @@ const CustomPieChartLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, perce
             dominantBaseline="central"
             fontSize="16px"
             fontWeight="bold"
-            style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.6)' }} // Added text shadow
+            style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.6)' }}
         >
             {`${name}: ${(percent * 100).toFixed(0)}%`}
         </text>
@@ -39,7 +38,7 @@ const CustomPieChartLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, perce
 const StatsDashboard = () => {
     const [stats, setStats] = useState<Stats | null>(null);
     const { setMessage } = useMessage();
-    const navigate = useNavigate(); // Initialize useNavigate
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchStats = async () => {
@@ -64,8 +63,8 @@ const StatsDashboard = () => {
     ];
 
     return (
-        <div className="book-details" style={{ maxWidth: '800px', margin: '30px auto', padding: '40px' }}> {/* Applied book-details styling */}
-            <button onClick={() => navigate(-1)}>← Retour</button> {/* Back button */}
+        <div className="book-details" style={{ maxWidth: '800px', margin: '30px auto', padding: '40px' }}>
+            <button onClick={() => navigate(-1)}>← Retour</button>
             <h1>Statistiques des Livres</h1>
             <p>Total de livres : {stats.total}</p>
             <p>Moyenne des notes : {stats.averageRating}</p>
@@ -79,17 +78,17 @@ const StatsDashboard = () => {
                             cx="50%"
                             cy="50%"
                             labelLine={false}
-                            outerRadius={100} // Increased outerRadius
+                            outerRadius={100}
                             fill="#8884d8"
                             dataKey="value"
-                            label={CustomPieChartLabel} // Use custom label component
+                            label={CustomPieChartLabel}
                         >
                             {pieChartData.map((entry, index) => (
                                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                             ))}
                         </Pie>
                         <Tooltip />
-                        <Legend wrapperStyle={{ paddingTop: '20px' }} /> {/* Added wrapperStyle */}
+                        <Legend wrapperStyle={{ paddingTop: '20px' }} />
                     </PieChart>
                 </ResponsiveContainer>
             </div>

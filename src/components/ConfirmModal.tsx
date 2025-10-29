@@ -1,6 +1,6 @@
 
 import React from 'react';
-import './ConfirmModal.css'; // We will create this CSS file next
+import './ConfirmModal.css';
 
 interface ConfirmModalProps {
   isOpen: boolean;

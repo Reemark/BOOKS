@@ -28,7 +28,7 @@ const BookDetails = () => {
     const [book, setBook] = useState<Book | null>(null);
     const [notes, setNotes] = useState<Note[]>([]);
     const [newNoteContent, setNewNoteContent] = useState('');
-    const [openLibraryEditions, setOpenLibraryEditions] = useState<number | null>(null); // New state for OpenLibrary editions
+    const [openLibraryEditions, setOpenLibraryEditions] = useState<number | null>(null); 
     const { id } = useParams();
 
     const navigate = useNavigate();
@@ -51,7 +51,7 @@ const BookDetails = () => {
         fetchBookAndNotes();
     }, [id, setMessage]);
 
-    // New useEffect for OpenLibrary API integration
+
     useEffect(() => {
         if (book && book.name) {
             const fetchOpenLibraryData = async () => {
@@ -64,12 +64,11 @@ const BookDetails = () => {
                     }
                 } catch (error) {
                     console.error('Error fetching from OpenLibrary API:', error);
-                    // Optionally, set a message for the user
                 }
             };
             fetchOpenLibraryData();
         }
-    }, [book]); // Trigger when book object changes
+    }, [book]); 
 
     const handleSubmitNote = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -78,7 +77,7 @@ const BookDetails = () => {
         try {
             await api.post(`/books/${id}/notes`, { content: newNoteContent });
             setNewNoteContent('');
-            fetchBookAndNotes(); // Refresh notes
+            fetchBookAndNotes(); 
             setMessage('Note ajoutée avec succès !', 'success');
         } catch (error) {
             console.error('Error adding note:', error);
@@ -91,7 +90,7 @@ const BookDetails = () => {
         try {
             const updatedBook = { ...book, favorite: !book.favorite };
             await api.put(`/books/${book.id}`, updatedBook);
-            setBook(updatedBook); // Update local state immediately
+            setBook(updatedBook); 
             setMessage(updatedBook.favorite ? 'Livre ajouté aux favoris !' : 'Livre retiré des favoris !', 'success');
         } catch (error) {
             console.error('Error updating favorite status:', error);
@@ -136,7 +135,7 @@ const BookDetails = () => {
 
             {openLibraryEditions !== null && (
                 <p>
-                    <span style={{ color: '#007bff', fontSize: '1.1em', fontWeight: 'bold' }}> {/* Added styling */}
+                    <span style={{ color: '#007bff', fontSize: '1.1em', fontWeight: 'bold' }}>
                         Nombre d'éditions référencées (OpenLibrary): {openLibraryEditions}
                     </span>
                 </p>

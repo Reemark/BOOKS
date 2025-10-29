@@ -5,7 +5,7 @@ import { useMessage } from '../context/MessageContext';
 import ConfirmModal from './ConfirmModal';
 import StarRating from './StarRating';
 import './StarRating.css';
-import { useTheme } from '../context/ThemeContext'; // Import useTheme
+import { useTheme } from '../context/ThemeContext';
 
 interface Book {
   id: number;
@@ -24,29 +24,29 @@ const BookList = () => {
         return savedBooks ? JSON.parse(savedBooks) : [];
     });
     const [searchTerm, setSearchTerm] = useState('');
-    const [filterRead, setFilterRead] = useState('all'); // 'all', 'read', 'unread'
-    const [filterFavorite, setFilterFavorite] = useState('all'); // 'all', 'favorite', 'not-favorite'
-    const [sortBy, setSortBy] = useState('id'); // 'id', 'name', 'author', 'theme', 'rating'
+    const [filterRead, setFilterRead] = useState('all');
+    const [filterFavorite, setFilterFavorite] = useState('all');
+    const [sortBy, setSortBy] = useState('id');
 
     const { messageContent, messageType, setMessage } = useMessage();
     const location = useLocation();
-    const { theme, toggleTheme } = useTheme(); // Use theme context
+    const { theme, toggleTheme } = useTheme(); 
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [bookToDeleteId, setBookToDeleteId] = useState<number | null>(null);
 
-    // Effect to save books to local storage whenever the books state changes
+    
     useEffect(() => {
         localStorage.setItem('books', JSON.stringify(books));
     }, [books]);
 
-    // Function to fetch books from API and update local storage
+    
     const fetchBooksFromApi = useCallback(async () => {
         try {
             const response = await api.get('/books');
             let fetchedBooks = response.data;
 
-            // Apply search
+            
             if (searchTerm) {
                 fetchedBooks = fetchedBooks.filter((book: Book) =>
                     book.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -54,7 +54,7 @@ const BookList = () => {
                 );
             }
 
-            // Apply filters
+            
             if (filterRead === 'read') {
                 fetchedBooks = fetchedBooks.filter((book: Book) => book.read);
             } else if (filterRead === 'unread') {
@@ -67,7 +67,7 @@ const BookList = () => {
                 fetchedBooks = fetchedBooks.filter((book: Book) => !book.favorite);
             }
 
-            // Apply sorting
+            
             fetchedBooks.sort((a: Book, b: Book) => {
                 let compare = 0;
                 if (sortBy === 'name' || sortBy === 'author' || sortBy === 'theme') {
@@ -82,8 +82,8 @@ const BookList = () => {
             });
 
             setBooks(fetchedBooks);
-            localStorage.setItem('books', JSON.stringify(fetchedBooks)); // Update local storage with fresh data
-            // Removed success message to prevent constant display
+            localStorage.setItem('books', JSON.stringify(fetchedBooks)); 
+            
 
         } catch (error) {
             console.error('Erreur lors de la synchronisation avec l\'API:', error);
@@ -91,23 +91,20 @@ const BookList = () => {
         }
     }, [setMessage, searchTerm, filterRead, filterFavorite, sortBy]);
 
-    // Initial load and API sync
     useEffect(() => {
-        // If books are already loaded from local storage, try to sync with API in background
         if (books.length > 0) {
             fetchBooksFromApi();
         } else {
-            // If no books in local storage, try API first, then fallback to empty
             fetchBooksFromApi();
         }
-    }, [fetchBooksFromApi, location.state]); // Re-fetch when location.state changes (e.g., after add/edit)
+    }, [fetchBooksFromApi, location.state]);
 
 
     useEffect(() => {
         if (messageContent) {
             const timer = setTimeout(() => {
                 setMessage(null);
-            }, 3000); // Clear message after 3 seconds
+            }, 3000);
             return () => clearTimeout(timer);
         }
     }, [messageContent, setMessage]);
@@ -115,7 +112,6 @@ const BookList = () => {
     useEffect(() => {
         if (location.state && location.state.message) {
             setMessage(location.state.message, location.state.type || 'info');
-            // Clear the state so the message doesn't reappear on subsequent visits
             window.history.replaceState({}, document.title);
         }
     }, [location.state, setMessage]);
@@ -168,7 +164,7 @@ const BookList = () => {
         }
     };
 
-    const handleRating = () => {}; // Placeholder, rating is updated in BookDetails
+    const handleRating = () => {};
 
     return (
         <div>

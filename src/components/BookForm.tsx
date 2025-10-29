@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import api from '../api';
 import { useMessage } from '../context/MessageContext';
-import * as ImagePicker from 'expo-image-picker';
-import { Platform } from 'react-native';
+
+
 
 interface Book {
-  id?: number; // id is optional for new books
+  id?: number;
   name: string;
   author: string;
   editor: string;
@@ -57,29 +57,9 @@ const BookForm = () => {
         }
     }, [id, setMessage]);
 
-    const pickImage = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
-            allowsEditing: true,
-            aspect: [4, 3],
-            quality: 1,
-        });
 
-        if (!result.canceled) {
-            setCoverImage(result.assets[0].uri);
-        }
-    };
 
-    const handleWebImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setCoverImage(reader.result as string);
-            };
-            reader.readAsDataURL(file);
-        }
-    };
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -143,11 +123,7 @@ const BookForm = () => {
                 </div>
                 <div>
                     <label>Image de couverture</label>
-                    {Platform.OS === 'web' ? (
-                        <input type="file" accept="image/*" onChange={handleWebImageChange} />
-                    ) : (
-                        <button type="button" onClick={pickImage}>Choisir une image</button>
-                    )}
+                    <input type="text" value={coverImage || ''} onChange={(e) => setCoverImage(e.target.value)} placeholder="URL de l'image de couverture" />
                     {coverImage && <img src={coverImage} alt="Couverture" style={{ width: '100px', height: 'auto', marginTop: '10px' }} />}
                 </div>
                 <div className="form-buttons">
