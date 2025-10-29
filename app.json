@@ -1,0 +1,7 @@
+{
+  "expo": {
+    "name": "books",
+    "slug": "books",
+    "main": "src/index.tsx"
+  }
+}

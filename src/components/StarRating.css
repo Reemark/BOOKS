@@ -1,0 +1,18 @@
+.star-rating {
+    display: inline-block;
+}
+
+.star-rating span {
+    cursor: pointer;
+    color: #ccc; /* Default star color */
+    font-size: 1.5em;
+    transition: color 0.2s ease-in-out;
+}
+
+.star-rating span.star-filled {
+    color: #ffc107; /* Filled star color (yellow/gold) */
+}
+
+.star-rating span:hover {
+    color: #ffdb58; /* Lighter yellow on hover */
+}

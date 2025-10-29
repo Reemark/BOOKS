@@ -1,0 +1,539 @@
+/* General Body and Typography */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #e0f7fa; /* Light blue background */
+  color: #343a40; /* Dark gray text */
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
+
+/* Main App Container */
+.App {
+  padding: 20px;
+  max-width: 1200px; /* A bit wider for better content display */
+  margin: 0 auto; /* Center the content */
+  position: relative; /* For positioning global messages */
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #212529;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.8em;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #007bff; /* Primary color for main heading */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 1em;
+}
+
+/* Buttons */
+button {
+  background-color: #007bff; /* Primary blue */
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  transition: all 0.3s ease; /* Smooth transitions for all properties */
+  box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+  margin-right: 10px;
+  outline: none;
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px); /* Lift effect */
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+button:active {
+  transform: translateY(0); /* Press effect */
+  box-shadow: 0 1px 3px rgba(0, 123, 255, 0.2);
+}
+
+button.delete {
+  background-color: #dc3545; /* Red for danger */
+  box-shadow: 0 2px 5px rgba(220, 53, 69, 0.2);
+}
+
+button.delete:hover {
+  background-color: #c82333;
+  box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
+}
+
+/* Icon Buttons */
+button.icon-button {
+  padding: 10px 12px; /* Adjust padding for icon */
+  font-size: 1.2em; /* Larger icon size */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Fixed width for circular appearance */
+  height: 40px; /* Fixed height for circular appearance */
+  border-radius: 50%; /* Make it circular */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-right: 0; /* Reset margin for icon button */
+}
+
+button.icon-button:hover {
+  transform: scale(1.1); /* Slightly larger on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Links */
+a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Edit Button (Link styled as button) */
+.edit-button {
+  background-color: #ffc107; /* Warning yellow */
+  color: #343a40;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(255, 193, 7, 0.2);
+  display: inline-block; /* Treat link as block for padding */
+  text-align: center;
+  margin-right: 10px; /* Add margin to separate from delete button */
+}
+
+.edit-button:hover {
+  background-color: #e0a800; /* Darker yellow on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(255, 193, 7, 0.3);
+  text-decoration: none;
+}
+
+/* List Styling */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: #ffffff;
+  border: 1px solid #e9ecef; /* Light border */
+  margin-bottom: 15px;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 44px 12px rgba(0, 0, 0, 0.08); /* More prominent shadow */
+  transition: all 0.3s ease;
+}
+
+li:hover {
+  transform: translateY(-5px); /* More pronounced lift */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+li.read {
+  background-color: #e6f7ff; /* Light blue for read books */
+  border-color: #b3e0ff;
+}
+
+li > div:last-child {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+  align-items: center;
+}
+
+/* Favorite Icon */
+.favorite-icon {
+  margin-left: 15px;
+  font-size: 1.8em; /* Larger icon */
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.favorite-icon:hover {
+  transform: scale(1.3); /* More pronounced scale */
+}
+
+/* Book Details Page */
+.book-details {
+  padding: 40px;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.book-details h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* Notes Section */
+.notes-section {
+  margin-top: 50px;
+  border-top: 1px solid #e9ecef;
+  padding-top: 30px;
+}
+
+.notes-section h2 {
+  color: #495057;
+  margin-bottom: 25px;
+}
+
+.note-item {
+  background-color: #f1f3f5;
+  border: 1px solid #dee2e6;
+  margin-bottom: 12px;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.add-note-form textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1.05em;
+  resize: vertical;
+}
+
+/* Form Messages */
+.form-message {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  animation: fadeIn 0.5s ease-out;
+  position: relative; /* For close button */
+}
+
+.form-message.success {
+  background-color: #d4edda; /* Light green */
+  color: #155724; /* Dark green text */
+  border-color: #c3e6cb; /* Green border */
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3); /* Subtle green shadow */
+  font-size: 1.1em;
+  padding: 20px;
+}
+
+.form-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
+  box-shadow: 0 44px 15px rgba(220, 53, 69, 0.3); /* More prominent red shadow */
+  font-size: 1.1em;
+  padding: 20px;
+}
+
+.info-message {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  background-color: #e2e3e5;
+  color: #383d41;
+  border-color: #d6d8db;
+  box-shadow: 0 4px 15px rgba(52, 58, 64, 0.15); /* Subtle gray shadow */
+  font-size: 1.1em;
+  padding: 20px;
+}
+
+.global-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  min-width: 300px;
+  max-width: 80%; /* Ensure it doesn't get too wide on large screens */
+  padding: 25px 30px; /* Larger padding for pop-up feel */
+  font-size: 1.4em; /* Larger font size */
+  border-radius: 10px; /* More rounded corners */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25); /* Stronger shadow */
+  text-align: center;
+  font-weight: bold;
+  animation: slideInFromTop 0.5s ease-out, fadeOut 0.5s ease-out 2.5s forwards; /* Slide in and fade out */
+}
+
+.global-message.success {
+  background-color: #28a745; /* Stronger green */
+  color: white;
+  border: 1px solid #218838;
+}
+
+.global-message.error {
+  background-color: #dc3545; /* Stronger red */
+  color: white;
+  border: 1px solid #c82333;
+}
+
+.global-message.info {
+  background-color: #007bff; /* Primary blue for info */
+  color: white;
+  border: 1px solid #0056b3;
+}
+
+/* Keyframe for slide in from top */
+@keyframes slideInFromTop {
+  from {
+    transform: translateX(-50%) translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Keyframe for fade out */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Add Book Link */
+.add-book-link {
+  display: inline-block;
+  margin-bottom: 30px;
+  padding: 14px 30px;
+  background-color: #28a745; /* Green for add action */
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(40, 167, 69, 0.2);
+}
+
+.add-book-link:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+  text-decoration: none;
+}
+
+/* Form Elements */
+.form-buttons {
+  margin-top: 30px;
+  text-align: right;
+}
+
+.form-buttons button {
+  margin-left: 10px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+select {
+  width: calc(100% - 30px); /* Account for padding and border */
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1.05em;
+  background-color: #fff;
+  -webkit-appearance: none; /* Remove default browser styling for selects */
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007bff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.2-6.4H18.2c-5%200-9.3%201.8-13.2%206.4-3.9%204.5-6%2010-6%2016.3%200%206.2%202.1%2011.7%206%2016.3l128.6%20127.9c3.9%204.5%209.3%206.4%2013.2%206.4s9.3-1.8%2013.2-6.4L287%20102c3.9-4.5%206-10%206-16.3s-2.1-11.7-6-16.3z%22%2F%3E%3C%2Fsvg%3E'); /* Custom arrow for select */
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px;
+}
+
+.controls-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-color: #e9ecef;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.search-input {
+  flex-grow: 1;
+  min-width: 250px;
+}
+
+.filter-select,
+.sort-select {
+  flex-grow: 1;
+  min-width: 150px;
+  width: auto; /* Override the 100% width from general input styles */
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.3); /* Larger checkboxes */
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #495057;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .App {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  li > div {
+    margin-top: 10px;
+  }
+
+  .book-details {
+    padding: 20px;
+  }
+
+  .controls-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input,
+  .filter-select,
+  .sort-select {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+/* Light Theme (default) */
+body.light-theme {
+  background-color: #e0f7fa; /* Light blue background */
+  color: #343a40; /* Dark gray text */
+}
+
+/* Dark Theme */
+body.dark-theme {
+  background-color: #282c34; /* Dark background */
+  color: #f8f8f2; /* Light text */
+}
+
+/* Adjust other elements for dark theme */
+body.dark-theme .App {
+  background-color: #282c34;
+  color: #f8f8f2;
+}
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6 {
+  color: #61dafb; /* React blue for headings */
+}
+
+body.dark-theme li {
+  background-color: #3a3f4b;
+  border-color: #444c56;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme li.read {
+  background-color: #4a505c;
+  border-color: #5a606c;
+}
+
+body.dark-theme .book-details {
+  background-color: #3a3f4b;
+  border-color: #444c56;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .notes-section h2 {
+  color: #f8f8f2;
+}
+
+body.dark-theme .note-item {
+  background-color: #4a505c;
+  border-color: #5a606c;
+}
+
+body.dark-theme .add-note-form textarea,
+body.dark-theme input[type="text"],
+body.dark-theme input[type="number"],
+body.dark-theme select {
+  background-color: #4a505c;
+  border-color: #5a606c;
+  color: #f8f8f2;
+}
+
+body.dark-theme .controls-container {
+  background-color: #3a3f4b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme label {
+  color: #f8f8f2;
+}
