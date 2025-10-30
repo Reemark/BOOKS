@@ -537,3 +537,109 @@ body.dark-theme .controls-container {
 body.dark-theme label {
   color: #f8f8f2;
 }
+
+/* Stats Dashboard Styling - Vibrant and Playful */
+.stats-dashboard-container {
+  padding: 40px;
+  border: none; /* Remove border */
+  border-radius: 15px; /* More rounded corners */
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); /* Vibrant gradient background */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+  margin-top: 30px;
+  text-align: center;
+  color: #333; /* Darker text for contrast */
+  animation: fadeInScale 0.8s ease-out; /* Entry animation */
+}
+
+.stats-dashboard-container h1 {
+  color: #fff; /* White heading for contrast */
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* Playful font */
+}
+
+.stats-cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px; /* Increased gap */
+  margin-top: 40px; /* More space */
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+  border: none;
+  border-radius: 12px; /* Rounded corners */
+  padding: 25px; /* More padding */
+  min-width: 220px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.stat-card:hover {
+  transform: translateY(-8px) scale(1.02); /* More pronounced lift and slight scale */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card h2 {
+  color: #FF6B6B; /* Coral heading */
+  font-size: 1.6em;
+  margin-bottom: 12px;
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* Playful font */
+}
+
+.stat-value {
+  font-size: 3em; /* Larger value */
+  font-weight: bold;
+  color: #4ECDC4; /* Turquoise value */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.chart-section {
+  margin-top: 60px; /* More space */
+  padding-top: 40px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.5); /* Dashed border */
+}
+
+.chart-section h2 {
+  color: #fff; /* White heading */
+  margin-bottom: 35px;
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* Playful font */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Dark Theme adjustments for Stats Dashboard */
+body.dark-theme .stats-dashboard-container {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); /* Darker gradient */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  color: #e0e0e0;
+}
+
+body.dark-theme .stat-card {
+  background-color: rgba(52, 73, 94, 0.9);
+  border-color: #495057;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .stat-card h2 {
+  color: #4ECDC4;
+}
+
+body.dark-theme .stat-value {
+  color: #FED766;
+}
+
+body.dark-theme .chart-section h2 {
+  color: #61dafb;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

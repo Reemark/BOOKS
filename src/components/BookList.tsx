@@ -7,6 +7,9 @@ import StarRating from './StarRating';
 import './StarRating.css';
 import { useTheme } from '../context/ThemeContext';
 import AnimatedBackground from './AnimatedBackground';
+import LoadingSpinner from './LoadingSpinner';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookOpen, faBook, faPlus, faChartBar, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 interface Book {
   id: number;
@@ -27,6 +30,7 @@ const BookList = () => {
     const [filterRead, setFilterRead] = useState('all');
     const [filterFavorite, setFilterFavorite] = useState('all');
     const [sortBy, setSortBy] = useState('id');
+    const [isLoading, setIsLoading] = useState(true);
 
     const { messageContent, messageType, setMessage } = useMessage();
     const location = useLocation();
@@ -42,6 +46,7 @@ const BookList = () => {
 
     
     const fetchBooksFromApi = useCallback(async () => {
+        setIsLoading(true); // Set loading to true before fetch
         try {
             const response = await api.get('/books');
             let fetchedBooks = response.data;
@@ -88,6 +93,8 @@ const BookList = () => {
         } catch (error) {
             console.error('Erreur lors de la synchronisation avec l\'API:', error);
             setMessage('Impossible de se connecter à l\'API. Affichage des données hors ligne.', 'info');
+        } finally {
+            setIsLoading(false); // Set loading to false after fetch completes (success or error)
         }
     }, [setMessage, searchTerm, filterRead, filterFavorite, sortBy]);
 
@@ -198,12 +205,14 @@ const BookList = () => {
                 </select>
 
             </div>
-            <Link to="/add" className="add-book-link">Ajouter un livre</Link>
-            <Link to="/stats" className="add-book-link" style={{ marginLeft: '10px' }}>Voir les statistiques</Link>
+            <Link to="/add" className="add-book-link"><FontAwesomeIcon icon={faPlus} /> Ajouter un livre</Link>
+            <Link to="/stats" className="add-book-link" style={{ marginLeft: '10px' }}><FontAwesomeIcon icon={faChartBar} /> Voir les statistiques</Link>
             <button onClick={toggleTheme} className="button" style={{ marginLeft: '10px' }}>
                 Basculer Thème ({theme === 'light' ? 'Sombre' : 'Clair'})
             </button>
-            {books.length === 0 ? (
+            {isLoading ? (
+                <LoadingSpinner />
+            ) : books.length === 0 ? (
                 <p>Aucun livre disponible. Ajoutez-en un !</p>
             ) : (
                 <ul>
@@ -219,15 +228,12 @@ const BookList = () => {
                             </div>
                             <div>
                                 <button onClick={() => toggleRead(book)} className="button">
-                                    {book.read ? 'Marquer comme non lu' : 'Marquer comme lu'}
+                                    {book.read ? <><FontAwesomeIcon icon={faBookOpen} /> Marquer comme non lu</> : <><FontAwesomeIcon icon={faBook} /> Marquer comme lu</>}
                                 </button>
-                                <Link to={`/edit/${book.id}`} className="button edit-button">Modifier</Link>
+                                <Link to={`/edit/${book.id}`} className="button edit-button"><FontAwesomeIcon icon={faEdit} /> Modifier</Link>
                                 <button onClick={() => handleDeleteClick(book.id)} className="delete icon-button">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px" height="20px">
-        <path d="M0 0h24v24H0V0z" fill="none"/>
-        <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"/>
-    </svg>
-</button>
+                                    <FontAwesomeIcon icon={faTrashAlt} />
+                                </button>
                             </div>
                         </li>
                     ))}

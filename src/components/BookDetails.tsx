@@ -4,6 +4,9 @@ import api from '../api';
 import StarRating from './StarRating';
 import './StarRating.css';
 import { useMessage } from '../context/MessageContext';
+import LoadingSpinner from './LoadingSpinner';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 interface Book {
   id: number;
@@ -28,12 +31,14 @@ const BookDetails = () => {
     const [notes, setNotes] = useState<Note[]>([]);
     const [newNoteContent, setNewNoteContent] = useState('');
     const [openLibraryEditions, setOpenLibraryEditions] = useState<number | null>(null); 
+    const [isLoading, setIsLoading] = useState(true);
     const { id } = useParams();
 
     const navigate = useNavigate();
     const { setMessage } = useMessage();
 
     const fetchBookAndNotes = async () => {
+        setIsLoading(true); // Set loading to true before fetch
         try {
             const bookResponse = await api.get(`/books/${id}`);
             setBook(bookResponse.data);
@@ -43,6 +48,8 @@ const BookDetails = () => {
         } catch (error) {
             console.error('Error fetching book or notes:', error);
             setMessage('Erreur lors du chargement du livre ou des notes.', 'error');
+        } finally {
+            setIsLoading(false); // Set loading to false after fetch completes (success or error)
         }
     };
 
@@ -110,8 +117,12 @@ const BookDetails = () => {
         }
     };
 
+    if (isLoading) {
+        return <LoadingSpinner />;
+    }
+
     if (!book) {
-        return <div>Chargement...</div>;
+        return <div>Livre non trouvé.</div>;
     }
 
     return (
