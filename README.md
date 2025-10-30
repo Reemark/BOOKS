@@ -11,6 +11,7 @@ L'application offre les fonctionnalités suivantes :
 *   **Ajouter et Modifier des Livres :** Vous pouvez ajouter de nouveaux livres avec des détails tels que le nom, l'auteur, le thème et une image de couverture. Vous pouvez également modifier les informations des livres existants.
 *   **Liste de Livres :** Affichez une liste de tous vos livres. Chaque livre peut être marqué comme "lu" ou "non lu" et comme "favori".
 *   **Détails du Livre :** Cliquez sur un livre pour voir ses détails, y compris sa note.
+*   **Notation par étoiles :** Attribuez une note de 0 à 5 étoiles à chaque livre pour évaluer votre appréciation.
 *   **Recherche et Filtres :** Recherchez des livres par titre ou par auteur. Filtrez votre collection par statut de lecture (tous, lus, non lus) et par statut de favori (tous, favoris, non favoris).
 *   **Tri :** Triez vos livres par ID, titre, auteur, thème ou note.
 *   **Tableau de Bord des Statistiques :** Visualisez des statistiques sur votre collection de livres.
