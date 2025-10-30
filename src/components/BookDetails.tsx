@@ -15,7 +15,6 @@ interface Book {
   favorite: boolean;
   rating: number;
   theme: string;
-  coverImage?: string;
 }
 
 interface Note {
@@ -123,7 +122,6 @@ const BookDetails = () => {
                     {book.favorite ? '❤️' : '🤍'}
                 </span>
             </h1>
-            {book.coverImage && <img src={book.coverImage} alt="Couverture du livre" style={{ maxWidth: '200px', height: 'auto', marginBottom: '20px' }} />}
             <p><strong>Auteur:</strong> {book.author}</p>
             <p><strong>Éditeur:</strong> {book.editor}</p>
             <p><strong>Année:</strong> {book.year}</p>

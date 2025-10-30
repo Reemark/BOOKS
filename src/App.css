@@ -158,8 +158,8 @@ li:hover {
 }
 
 li.read {
-  background-color: #e6f7ff; /* Light blue for read books */
-  border-color: #b3e0ff;
+  background-color: #d4edda; /* Light green for read books */
+  border-color: #c3e6cb;
 }
 
 li > div:last-child {

@@ -6,6 +6,7 @@ import ConfirmModal from './ConfirmModal';
 import StarRating from './StarRating';
 import './StarRating.css';
 import { useTheme } from '../context/ThemeContext';
+import AnimatedBackground from './AnimatedBackground';
 
 interface Book {
   id: number;
@@ -15,7 +16,6 @@ interface Book {
   rating: number;
   read: boolean;
   favorite: boolean;
-  coverImage?: string;
 }
 
 const BookList = () => {
@@ -211,7 +211,6 @@ const BookList = () => {
                         <li key={book.id} className={book.read ? 'read' : ''}>
 
                             <div>
-                                {book.coverImage && <img src={book.coverImage} alt="Couverture" style={{ width: '50px', height: 'auto', marginRight: '10px' }} />}
                                 <Link to={`/books/${book.id}`}>{book.name}</Link> par {book.author}
                                 <span className="favorite-icon" onClick={() => toggleFavorite(book)} style={{ cursor: 'pointer' }}>
                                     {book.favorite ? '❤️' : '🤍'}
@@ -240,6 +239,7 @@ const BookList = () => {
                 onConfirm={handleConfirmDelete}
                 message="Êtes-vous sûr de vouloir supprimer ce livre ?"
             />
+            <AnimatedBackground />
         </div>
     );
 };

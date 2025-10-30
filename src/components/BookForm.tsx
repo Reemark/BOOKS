@@ -3,8 +3,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import api from '../api';
 import { useMessage } from '../context/MessageContext';
 
-
-
 interface Book {
   id?: number;
   name: string;
@@ -15,7 +13,6 @@ interface Book {
   favorite: boolean;
   rating: number;
   theme: string;
-  coverImage?: string;
 }
 
 const BookForm = () => {
@@ -27,7 +24,6 @@ const BookForm = () => {
     const [favorite, setFavorite] = useState(false);
     const [rating, setRating] = useState(0);
     const [theme, setTheme] = useState('');
-    const [coverImage, setCoverImage] = useState<string | undefined>(undefined);
 
     const navigate = useNavigate();
     const { id } = useParams();
@@ -47,7 +43,6 @@ const BookForm = () => {
                     setFavorite(book.favorite || false);
                     setRating(book.rating || 0);
                     setTheme(book.theme || '');
-                    setCoverImage(book.coverImage || undefined);
                 } catch (error) {
                     console.error('Error fetching book:', error);
                     setMessage('Erreur lors du chargement du livre.', 'error');
@@ -57,13 +52,9 @@ const BookForm = () => {
         }
     }, [id, setMessage]);
 
-
-
-
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const book: Book = { name, author, editor, year: Number(year), read, favorite, rating, theme, coverImage };
+        const book: Book = { name, author, editor, year: Number(year), read, favorite, rating, theme };
         try {
             if (id) {
                 await api.put(`/books/${id}`, book);
@@ -120,11 +111,6 @@ const BookForm = () => {
                 <div>
                     <label>Thème</label>
                     <input type="text" value={theme} onChange={(e) => setTheme(e.target.value)} />
-                </div>
-                <div>
-                    <label>Image de couverture</label>
-                    <input type="text" value={coverImage || ''} onChange={(e) => setCoverImage(e.target.value)} placeholder="URL de l'image de couverture" />
-                    {coverImage && <img src={coverImage} alt="Couverture" style={{ width: '100px', height: 'auto', marginTop: '10px' }} />}
                 </div>
                 <div className="form-buttons">
                     <button type="submit">Enregistrer</button>
