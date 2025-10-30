@@ -1,29 +1,29 @@
-# Pour lancer le serveur, utilisez `npm start`.
+# Application de Gestion de Livres
 
-# Démarrage avec Create React App
+**Important :** L'API pour les livres doit être lancée sur `http://localhost:3000`.
 
-Ce projet a été initialisé avec [Create React App](https://github.com/facebook/create-react-app).
+Ceci est une application de gestion de livres construite avec React et TypeScript.
 
-## Aperçu du Projet
+## Fonctionnalités
 
-Ceci est une application de gestion de livres construite avec React et TypeScript. Elle permet aux utilisateurs de :
-*   Ajouter de nouveaux livres avec des détails tels que le nom, l'auteur, le thème et l'image de couverture.
-*   Afficher une liste de tous les livres.
-*   Modifier les détails des livres existants.
-*   Supprimer des livres.
-*   Marquer les livres comme lus ou non lus.
-*   Marquer les livres comme favoris.
-*   Rechercher des livres par titre ou par auteur.
-*   Filtrer les livres par statut de lecture (tous, lus, non lus) et par statut de favori (tous, favoris, non favoris).
-*   Trier les livres par ID, titre, auteur, thème ou note.
-*   Afficher des informations détaillées pour chaque livre, y compris les notes.
+L'application offre les fonctionnalités suivantes :
 
-## Technologies Utilisées
+*   **Ajouter et Modifier des Livres :** Vous pouvez ajouter de nouveaux livres avec des détails tels que le nom, l'auteur, le thème et une image de couverture. Vous pouvez également modifier les informations des livres existants.
+*   **Liste de Livres :** Affichez une liste de tous vos livres. Chaque livre peut être marqué comme "lu" ou "non lu" et comme "favori".
+*   **Détails du Livre :** Cliquez sur un livre pour voir ses détails, y compris sa note.
+*   **Recherche et Filtres :** Recherchez des livres par titre ou par auteur. Filtrez votre collection par statut de lecture (tous, lus, non lus) et par statut de favori (tous, favoris, non favoris).
+*   **Tri :** Triez vos livres par ID, titre, auteur, thème ou note.
+*   **Tableau de Bord des Statistiques :** Visualisez des statistiques sur votre collection de livres.
+*   **Thèmes :** Changez l'apparence de l'application en basculant entre les thèmes clair et sombre.
+*   **Mode Hors Ligne :** L'application utilise le stockage local de votre navigateur pour sauvegarder vos données, vous permettant de l'utiliser même sans connexion Internet.
 
-*   **Frontend:** React, TypeScript
-*   **Outil de construction:** Craco (Create React App Configuration Override)
-*   **Style:** CSS
-*   **Interaction API:** Axios (ou similaire, basé sur `src/api.ts`)
+## Pour commencer
+
+Pour lancer le serveur, utilisez la commande suivante :
+
+```bash
+npm start
+```
 
 ## Scripts Disponibles
 
@@ -50,7 +50,7 @@ Elle regroupe correctement React en mode production et optimise la construction 
 La construction est minifiée et les noms de fichiers incluent les hachages.
 Votre application est prête à être déployée !
 
-Consultez la section sur le [déploiement](https://facebook.com/create-react-app/docs/deployment) pour plus d'informations.
+Consultez la section sur le [déploiement](https://facebook.github.io/create-react-app/docs/deployment) pour plus d'informations.
 
 ### `npm run eject`
 
@@ -67,27 +67,3 @@ Vous n'êtes pas obligé d'utiliser `eject`. L'ensemble des fonctionnalités sé
 Vous pouvez en apprendre davantage dans la [documentation de Create React App](https://facebook.github.io/create-react-app/docs/getting-started).
 
 Pour apprendre React, consultez la [documentation de React](https://reactjs.org/).
-
-### Division du code
-
-Cette section a été déplacée ici : [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyse de la taille du bundle
-
-Cette section a été déplacée ici : [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Création d'une application web progressive
-
-Cette section a été déplacée ici : [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Configuration avancée
-
-Cette section a été déplacée ici : [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Déploiement
-
-Cette section a été déplacée ici : [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` échoue à minifier
-
-Cette section a été déplacée ici : [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
