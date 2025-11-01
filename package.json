@@ -20,13 +20,12 @@
     "craco": "^0.0.3",
     "expo": "^54.0.21",
     "expo-image-picker": "~17.0.8",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "react-native-web": "^0.21.2",
     "react-router-dom": "^7.9.4",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "recharts": "^3.3.0",
-    "typescript": "~5.9.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -56,6 +55,7 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
-    "@types/react-dom": "~19.1.7"
+    "@types/react-dom": "~19.1.7",
+    "typescript": "^4.9.5"
   }
 }
