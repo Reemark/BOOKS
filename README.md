@@ -1,6 +1,6 @@
 # Application de Gestion de Livres
 
-**Important :** L'API pour les livres doit être lancée sur `http://localhost:3000`.
+**Important :** L'API pour les livres doit être lancée sur `http://localhost:300
 
 Ceci est une application de gestion de livres construite avec React et TypeScript.
 
