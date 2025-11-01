@@ -1,12 +1,12 @@
 # Application de Gestion de Livres
 
-**Important :** L'API pour les livres doit être lancée sur `http://localhost:300
+**Important :** L'API pour les livres doit être lancée sur `http://localhost:3000`.
 
 Ceci est une application de gestion de livres construite avec React et TypeScript.
 
 ## Fonctionnalités
 
-L'application offre les fonctionnalités suivantes :
+L'application offre les fonctionnalités suivantes 
 
 *   **Ajouter et Modifier des Livres :** Vous pouvez ajouter de nouveaux livres avec des détails tels que le nom, l'auteur, le thème et une image de couverture. Vous pouvez également modifier les informations des livres existants.
 *   **Liste de Livres :** Affichez une liste de tous vos livres. Chaque livre peut être marqué comme "lu" ou "non lu" et comme "favori".
