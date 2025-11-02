@@ -20,6 +20,12 @@ L'application offre les fonctionnalités suivantes
 
 ## Pour commencer
 
+Pour installer les dépendances, utilisez la commande suivante :
+
+```bash
+npm install
+```
+
 Pour lancer le serveur, utilisez la commande suivante :
 
 ```bash
