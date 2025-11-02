@@ -74,3 +74,12 @@ Vous n'êtes pas obligé d'utiliser `eject`. L'ensemble des fonctionnalités sé
 Vous pouvez en apprendre davantage dans la [documentation de Create React App](https://facebook.github.io/create-react-app/docs/getting-started).
 
 Pour apprendre React, consultez la [documentation de React](https://reactjs.org/).
+
+## Captures d'écran
+
+![Capture d'écran 1](public/images/1.png)
+![Capture d'écran 2](public/images/2.png)
+![Capture d'écran 3](public/images/3.png)
+![Capture d'écran 4](public/images/4.png)
+![Capture d'écran 5](public/images/5.png)
+![Capture d'écran 6](public/images/6.png)
